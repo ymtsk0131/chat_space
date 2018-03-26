@@ -1,0 +1,51 @@
+%div.contents
+  %div.left-content
+    %div.left-content-user
+      %div.left-content-user__name ユーザー名
+      %a{href: '#'}= fa_icon "cog", class: "left-content-user__icon"
+      %a{href: '#'}= fa_icon "edit", class: "left-content-user__icon"
+    %div.left-content-group
+      %div.left-content-group__list
+        %div.left-content-group__list--name グループ１
+        %div.left-content-group__list--text 新着メッセージ
+      %div.left-content-group__list
+        %div.left-content-group__list--name グループ２
+        %div.left-content-group__list--text 新着メッセージ
+  %div.right-content
+    %div.right-content-group
+      %div.right-content-group__name グループ名　
+      %div.right-content-group__edit-botton Edit
+      %div.right-content-group__member MEMBER: user1、user2、user3
+    %div.right-content-message
+      %div.right-content-message__list
+        %div.right-content-message__list--name user1
+        %div.right-content-message__list--date 2018/03/25
+        %div.right-content-message__list--text メッセージです
+      %div.right-content-message__list
+        %div.right-content-message__list--name user1
+        %div.right-content-message__list--date 2018/03/25
+        %div.right-content-message__list--text メッセージです
+      %div.right-content-message__list
+        %div.right-content-message__list--name user1
+        %div.right-content-message__list--date 2018/03/25
+        %div.right-content-message__list--text メッセージです
+      %div.right-content-message__list
+        %div.right-content-message__list--name user1
+        %div.right-content-message__list--date 2018/03/25
+        %div.right-content-message__list--text メッセージです
+      %div.right-content-message__list
+        %div.right-content-message__list--name user1
+        %div.right-content-message__list--date 2018/03/25
+        %div.right-content-message__list--text メッセージです
+      %div.right-content-message__list
+        %div.right-content-message__list--name user1
+        %div.right-content-message__list--date 2018/03/25
+        %div.right-content-message__list--text メッセージです
+      %div.right-content-message__list
+        %div.right-content-message__list--name user1
+        %div.right-content-message__list--date 2018/03/25
+        %div.right-content-message__list--text メッセージです
+    %div.right-content-form
+      %form{action: "", method: :post}
+        %input{type: "text", class: "right-content-form__text-form", placeholder: 'type a message'}
+        %input{type: "submit", class: "right-content-form__submit-botton", value: "send"}
