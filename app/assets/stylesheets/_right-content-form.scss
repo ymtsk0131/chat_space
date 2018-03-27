@@ -1,0 +1,25 @@
+.right-content-form {
+  @include right-contents;
+  background-color: #AAAAAA;
+  position: fixed;
+  margin-left: 300px;
+  bottom: 0;
+
+  &__text-form{
+    margin: 20px 0;
+    padding-left: 10px;
+    height: 50px;
+    width: calc(100vw - 300px - 195px);
+  }
+
+  &__submit-botton {
+    background-color: $skyBlue;
+    width: 80px;
+    height: 50px;
+    color: #FFFFFF;
+    border: none;
+    margin-left: 15px;
+    padding: 0 20px;
+  }
+}
+

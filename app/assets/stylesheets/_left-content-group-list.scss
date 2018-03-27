@@ -1,0 +1,18 @@
+.left-content-group-list {
+  @include left-contents;
+  background-color: $darkBlue;
+  padding-top: 20px;
+  margin-top: 100px;
+  height: calc(100vh - 100px);
+  position: fixed;
+
+  &__name {
+    font-size: 15px;
+    margin-bottom:5px;
+  }
+
+  &__latest-message {
+    font-size: 11px;
+    margin-bottom: 40px;
+  }
+}

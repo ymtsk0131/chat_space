@@ -1,0 +1,19 @@
+.left-content-user-detail {
+  @include left-contents;
+  background-color: $deepBlue;
+  height: 100px;
+  position: fixed;
+
+  &__name {
+    font-size: 16px;
+    font-weight: bold;
+    float: left;
+    margin-top: 35px;
+  }
+
+  &__icon {
+    float: right;
+    color: #FFFFFF;
+    margin-top: 35px;
+  }
+}
