@@ -1,0 +1,28 @@
+.right-content-message {
+  @include right-contents;
+  background-color: $lightBlue;
+  min-height: calc(100vh - 100px - 120px);
+  margin-top: 100px;
+  padding-top: 46px;
+
+  &__user-name {
+    font-size: 16px;
+    color: #434A54;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    display:inline-block;
+  }
+
+  &__date {
+    font-size: 12px;
+    color: #999999;
+    display:inline-block;
+  }
+
+  &__message-text {
+    font-size: 14px;
+    color: #434A54;
+    padding-bottom: 40px;
+  }
+}
