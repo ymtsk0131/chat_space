@@ -1,14 +1,11 @@
 %div.contents
-  %div.left-content-user-detail
-    %div.left-content-user-detail__name ユーザー名
-    %a{href: "/users/edit"}= fa_icon "cog", class: "left-content-user-detail__icon"
-    %a{href: "/groups/new"}= fa_icon "edit", class: "left-content-user-detail__icon"
+  =render 'layouts/user-detail'
   %div.right-content-group-detail
     %div.right-content-group-detail__name グループ名　
     %a{href: "/groups/1/edit"}
       %div.right-content-group-detail__edit-botton Edit
     %div.right-content-group-detail__member-list MEMBER: user1、user2、user3
-  =render 'groups'
+  =render 'layouts/groups'
   %div.right-content-message
     %div.right-content-message__user-name user1
     %div.right-content-message__date 2018/03/25
