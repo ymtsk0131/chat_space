@@ -1,4 +1,4 @@
 %div.left-content-user-detail
-  %div.left-content-user-detail__name ユーザー名
+  %div.left-content-user-detail__name=current_user.name
   %a{href: "/users/edit"}= fa_icon "cog", class: "left-content-user-detail__icon"
   %a{href: "/groups/new"}= fa_icon "edit", class: "left-content-user-detail__icon"
