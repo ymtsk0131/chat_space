@@ -2,33 +2,17 @@
   =render 'layouts/user-detail'
   %div.right-content-group-detail
     %div.right-content-group-detail__name グループ名　
-    %a{href: "/groups/1/edit"}
+    %a{href: "edit"}
       %div.right-content-group-detail__edit-botton Edit
     %div.right-content-group-detail__member-list MEMBER: user1、user2、user3
   =render 'layouts/groups'
   %div.right-content-message
-    %div.right-content-message__user-name user1
-    %div.right-content-message__date 2018/03/25
-    %div.right-content-message__message-text メッセージです
-    %div.right-content-message__user-name user1
-    %div.right-content-message__date 2018/03/25
-    %div.right-content-message__message-text メッセージです
-    %div.right-content-message__user-name user1
-    %div.right-content-message__date 2018/03/25
-    %div.right-content-message__message-text メッセージです
-    %div.right-content-message__user-name user1
-    %div.right-content-message__date 2018/03/25
-    %div.right-content-message__message-text メッセージです
-    %div.right-content-message__user-name user1
-    %div.right-content-message__date 2018/03/25
-    %div.right-content-message__message-text メッセージです
-    %div.right-content-message__user-name user1
-    %div.right-content-message__date 2018/03/25
-    %div.right-content-message__message-text メッセージです
-    %div.right-content-message__user-name user1
-    %div.right-content-message__date 2018/03/25
-    %div.right-content-message__message-text メッセージです
+    - @messages.each do |message|
+      %div.right-content-message__user-name=message.user.name
+      %div.right-content-message__date=message.created_at
+      %div.right-content-message__message-text=message.content
+
   %div.right-content-form
-    %form{action: "", method: :post}
-      %input{type: "text", class: "right-content-form__text-form", placeholder: 'type a message'}
-      %input{type: "submit", class: "right-content-form__submit-botton", value: "send"}
+    = form_for @message, url: group_messages_path do |f|
+      =f.text_field :content, class: "right-content-form__text-form", placeholder: 'type a message'
+      =f.submit "SEND", class: "right-content-form__submit-botton"
