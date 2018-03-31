@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to group_messages_path, notice: "メッセージが送信されました"
     else
-      redirect_to group_messages_path, notice: "メッセージ送信を失敗しました"
+      redirect_to group_messages_path, notice: "メッセージを入力してください"
     end
   end
 

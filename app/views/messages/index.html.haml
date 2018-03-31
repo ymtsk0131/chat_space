@@ -10,9 +10,16 @@
     - @messages.each do |message|
       %div.right-content-message__user-name=message.user.name
       %div.right-content-message__date=message.created_at
-      %div.right-content-message__message-text=message.content
+      - if message.content.present?
+        %div.right-content-message__message-text= message.content
+      - if message.image.present?
+        %div.right-content-message__message-text= image_tag message.image.url
 
-  %div.right-content-form
-    = form_for @message, url: group_messages_path do |f|
-      =f.text_field :content, class: "right-content-form__text-form", placeholder: 'type a message'
-      =f.submit "SEND", class: "right-content-form__submit-botton"
+  .right-content-form
+    = form_for [@group, @message] do |f|
+      = f.text_field :content, class: 'right-content-form__text-form', placeholder: 'type a message'
+      .form__mask
+        = f.label :image, class: 'form__mask__image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'right-content-form__submit-botton'
