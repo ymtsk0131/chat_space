@@ -11,7 +11,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to group_messages_path, notice: "メッセージが送信されました"
     else
-      redirect_to group_messages_path, notice: "メッセージを入力してください"
+      redirect_to group_messages_path, alert: "メッセージを入力してください"
     end
   end
 
@@ -21,6 +21,6 @@ class MessagesController < ApplicationController
   end
 
   def set_group
-    @group =Group.find(params[:group_id])
+    @group = Group.find(params[:group_id])
   end
 end

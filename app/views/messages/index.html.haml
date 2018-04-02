@@ -1,11 +1,14 @@
 %div.contents
-  =render 'layouts/user-detail'
+  =render 'layouts/side-bar'
   %div.right-content-group-detail
-    %div.right-content-group-detail__name グループ名　
+    %div.right-content-group-detail__name
+      =@group.name
     %a{href: "edit"}
       %div.right-content-group-detail__edit-botton Edit
-    %div.right-content-group-detail__member-list MEMBER: user1、user2、user3
-  =render 'layouts/groups'
+    %div.right-content-group-detail__member-list
+      MEMBER:
+      -@group.users.each do |user|
+        =user.name
   %div.right-content-message
     - @messages.each do |message|
       %div.right-content-message__user-name=message.user.name
@@ -15,11 +18,11 @@
       - if message.image.present?
         %div.right-content-message__message-text= image_tag message.image.url
 
-  .right-content-form
-    = form_for [@group, @message] do |f|
-      = f.text_field :content, class: 'right-content-form__text-form', placeholder: 'type a message'
-      .form__mask
-        = f.label :image, class: 'form__mask__image' do
-          = fa_icon 'picture-o', class: 'icon'
+  .form
+    .form_mask
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__mask__text', placeholder: 'type a message'
+        = f.submit 'Send', class: 'form__mask__submit-btn'
+        = f.label :image, class: 'form__mask__icon' do
+          = fa_icon 'picture-o'
           = f.file_field :image, class: 'hidden'
-      = f.submit 'Send', class: 'right-content-form__submit-botton'
