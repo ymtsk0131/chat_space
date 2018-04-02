@@ -1,14 +1,11 @@
-@mixin left-contents {
-  padding: 0 20px;
-  width: 260px;
-  color: #FFFFFF;
-  float: left;
-}
-
 @mixin right-contents {
   padding: 0 40px;
   width: calc(100vw - 380px);
   float: right;
+}
+
+.hidden {
+  display: none;
 }
 
 $deepBlue: #253141;

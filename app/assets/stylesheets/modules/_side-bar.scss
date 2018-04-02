@@ -1,0 +1,46 @@
+@mixin side-bar-block {
+  padding: 0 20px;
+  width: 260px;
+  color: #FFFFFF;
+}
+
+.side-bar {
+  background-color: $darkBlue;
+  float: left;
+  position: fixed;
+  height: 100vh;
+
+  &-user-detail {
+    @include side-bar-block;
+    background-color: $deepBlue;
+    height: 100px;
+
+    &__name {
+      font-size: 16px;
+      font-weight: bold;
+      float: left;
+      margin-top: 35px;
+    }
+
+    &__icon {
+      float: right;
+      color: #FFFFFF;
+      margin-top: 35px;
+    }
+  }
+
+  &-group-list {
+    @include side-bar-block;
+    padding-top: 20px;
+
+    &__name {
+      font-size: 15px;
+      margin-bottom:5px;
+    }
+
+    &__latest-message {
+      font-size: 11px;
+      margin-bottom: 40px;
+    }
+  }
+}
