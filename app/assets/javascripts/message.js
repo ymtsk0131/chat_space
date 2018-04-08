@@ -22,7 +22,10 @@ $(function(){
       console.log(data)
       var html = messageHTML(data);
       console.log(html)
-      $('.right-content-message').prepend(html)
+      $('.right-content-message').append(html)
+      $('html, body').animate({
+          scrollTop: $(document).height()
+        },1500);
       $('#message_content').val('')
     })
     .fail(function(){
