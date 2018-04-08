@@ -20,7 +20,7 @@
 
   .form
     .form_mask
-      = form_for [@group, @message] do |f|
+      = form_for [@group, @message], html: {id: 'new_message'} do |f|
         = f.text_field :content, class: 'form__mask__text', placeholder: 'type a message'
         = f.submit 'Send', class: 'form__mask__submit-btn'
         = f.label :image, class: 'form__mask__icon' do
