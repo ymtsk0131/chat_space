@@ -14,6 +14,14 @@ $(function(){
     return html;
   }
 
+    function bothHTML(message){
+    var html = `<div class="right-content-message__user-name">${message.user_name}</div>
+                <div class="right-content-message__date">${message.created_at}</div>
+                <div class="right-content-message__message-text">${message.content}</div>
+                <div class="right-content-message__message-text"><img src="${message.image_url}"></div>`
+    return html;
+  }
+
   $(document).on('submit', '#new_message', function(e){
     console.log(1);
     e.preventDefault();
@@ -28,7 +36,9 @@ $(function(){
       contentType: false
     })
     .done(function(data){
-      if(data.content){
+      if(data.content && data.image_url){
+        var html = bothHTML(data);
+      }else if(data.content){
         var html = messageHTML(data);
       }else if(data.image_url){
         var html = imageHTML(data);
