@@ -8,17 +8,7 @@ $(function(){
   }
 
   function imageHTML(message){
-    var html = `<div class="right-content-message__user-name">${message.user_name}</div>
-                <div class="right-content-message__date">${message.created_at}</div>
-                <div class="right-content-message__message-text"><img src="${message.image_url}"></div>`
-    return html;
-  }
-
-    function bothHTML(message){
-    var html = `<div class="right-content-message__user-name">${message.user_name}</div>
-                <div class="right-content-message__date">${message.created_at}</div>
-                <div class="right-content-message__message-text">${message.content}</div>
-                <div class="right-content-message__message-text"><img src="${message.image_url}"></div>`
+    var html = `<div class="right-content-message__message-text"><img src="${message.image_url}"></div>`
     return html;
   }
 
@@ -35,15 +25,16 @@ $(function(){
       processData: false,
       contentType: false
     })
+
     .done(function(data){
-      if(data.content && data.image_url){
-        var html = bothHTML(data);
-      }else if(data.content){
-        var html = messageHTML(data);
-      }else if(data.image_url){
-        var html = imageHTML(data);
+      if(data.image_url){
+        var img = imageHTML(data)
+      }else{
+        var img = ''
       }
-      $('.right-content-message').append(html)
+
+      var html = messageHTML(data)
+      $('.right-content-message').append(html).append(img)
       $('html, body').animate({
           scrollTop: $(document).height()
         },1500);
