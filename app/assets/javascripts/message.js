@@ -14,7 +14,8 @@ $(function(){
     return html;
   }
 
-  $('#new_message').on('submit', function(e){
+  $(document).on('submit', '#new_message', function(e){
+    console.log(1);
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
@@ -36,7 +37,8 @@ $(function(){
       $('html, body').animate({
           scrollTop: $(document).height()
         },1500);
-      $('#message_content').val('')
+      $('#message_content').val('');
+      $('#new_message input.form__mask__submit-btn').prop('disabled', false);
     })
     .fail(function(){
       alert('メッセージを入力してください');
