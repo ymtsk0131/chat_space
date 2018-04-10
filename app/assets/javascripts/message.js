@@ -13,7 +13,6 @@ $(function(){
   }
 
   $(document).on('submit', '#new_message', function(e){
-    console.log(1);
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
@@ -27,12 +26,7 @@ $(function(){
     })
 
     .done(function(data){
-      if(data.image_url){
-        var img = imageHTML(data)
-      }else{
-        var img = ''
-      }
-
+      var img = data.image_url ? imageHTML(data) : '';
       var html = messageHTML(data)
       $('.right-content-message').append(html).append(img)
       $('html, body').animate({
