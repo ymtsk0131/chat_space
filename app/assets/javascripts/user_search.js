@@ -47,14 +47,12 @@ $(function(){
     var user_name = add_btn.attr('data-user-name')
     addUser(user_name, user_id);
     $('#chat-group-user-' + user_id).remove();
-    console.log("add");
   })
 
   $(document).on('click', '#chat-group-members', function(){
     var remove_btn = $('.chat-group-user__btn--remove')
     var user_id = remove_btn.attr('data-member-id')
     $('#chat-group-member-' + user_id).remove();
-    console.log("remove")
   })
 });
 
