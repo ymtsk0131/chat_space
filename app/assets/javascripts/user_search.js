@@ -6,7 +6,7 @@ $(function(){
   function appendUser(user) {
     var html = `<div class="chat-group-user clearfix" id="chat-group-user-${user.id}">
                   <p class="chat-group-user__name">${user.name}</p>
-                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
+                  <a class="user-search-add chat-group-user__btn chat-group-user__btn--add" id="btn-add-${user.id}" data-user-id="${user.id}" data-user-name="${user.name}">追加</a>
                 </div>`
     users.append(html)
   }
@@ -42,7 +42,7 @@ $(function(){
   });
 
   $(document).on('click', '#chat-group-users', function(){
-    var add_btn = $('.chat-group-user__btn--add')
+    var add_btn = $('#' + event.target.id)
     var user_id = add_btn.attr('data-user-id')
     var user_name = add_btn.attr('data-user-name')
     addUser(user_name, user_id);
@@ -50,7 +50,8 @@ $(function(){
   })
 
   $(document).on('click', '#chat-group-members', function(){
-    var remove_btn = $('.chat-group-user__btn--remove')
+    console.log(event.target.id)
+    var remove_btn = $('#' + event.target.id)
     var user_id = remove_btn.attr('data-member-id')
     $('#chat-group-member-' + user_id).remove();
   })
