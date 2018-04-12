@@ -33,7 +33,7 @@ RSpec.configure do |config|
   Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include ControllerMacros, type: :controller
-end
+# end
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
