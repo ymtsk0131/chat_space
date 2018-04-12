@@ -50,7 +50,6 @@ $(function(){
   })
 
   $(document).on('click', '#chat-group-members', function(){
-    console.log(event.target.id)
     var remove_btn = $('#' + event.target.id)
     var user_id = remove_btn.attr('data-member-id')
     $('#chat-group-member-' + user_id).remove();
