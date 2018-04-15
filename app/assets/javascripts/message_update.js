@@ -16,11 +16,7 @@ $(function(){
 
     var url = $(location).attr('pathname');
     var latest_message = $('.right-content-message__user-name:last')
-    if(latest_message.length){
-      var message_id = latest_message.data("message-id")
-    }else{
-      var message_id = 0
-    }
+    var message_id = latest_message.length ? latest_message.data("message-id") : 0
 
     $.ajax({
       url: url,
