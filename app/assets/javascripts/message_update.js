@@ -31,10 +31,10 @@ $(function(){
           var img = new_message.image_url ? imageHTML(new_message) : '';
           var html = messageHTML(new_message)
           $('.right-content-message').append(html).append(img)
-          $('html, body').animate({
-              scrollTop: $(document).height()
-            },1500);
         })
+        $('html, body').animate({
+            scrollTop: $(document).height()
+          },1500);
       }
     })
 
