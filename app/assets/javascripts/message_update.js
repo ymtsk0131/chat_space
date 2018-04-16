@@ -1,7 +1,7 @@
 $(function(){
 
   function messageHTML(message){
-    var html = `<div class="right-content-message__user-name" data-message-id="${message.id}">${message.user.name}</div>
+    var html = `<div class="right-content-message__user-name" data-id="${message.id}">${message.user.name}</div>
                 <div class="right-content-message__date">${message.created_at}</div>
                 <div class="right-content-message__message-text">${message.content}</div>`
     return html;
@@ -13,15 +13,13 @@ $(function(){
   }
 
   setInterval(function(){
-
-    var url = $(location).attr('pathname');
     var latest_message = $('.right-content-message__user-name:last')
-    var message_id = latest_message.length ? latest_message.data("message-id") : 0
+    var message_id = latest_message.length ? latest_message.data("id") : 0
 
     $.ajax({
-      url: url,
+      url: location.href,
       type: 'GET',
-      data: { message: { id: message_id } },
+      data: { id: message_id },
       dataType: 'json'
     })
 

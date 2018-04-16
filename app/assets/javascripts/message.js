@@ -1,7 +1,7 @@
 $(function(){
   // メッセージのHTMLを生成する
   function messageHTML(message){
-    var html = `<div class="right-content-message__user-name" data-message-id="${message.id}">${message.user_name}</div>
+    var html = `<div class="right-content-message__user-name" data-id="${message.id}">${message.user_name}</div>
                 <div class="right-content-message__date">${message.created_at}</div>
                 <div class="right-content-message__message-text">${message.content}</div>`
     return html;
