@@ -29,9 +29,8 @@ $(function(){
             var html = messageHTML(new_message)
             $('.right-content-message').append(html).append(img)
           })
-          $('html, body').animate({
-              scrollTop: $(document).height()
-            },1500);
+          var position = $('.right-content-message').offset().top + $('.right-content-message').height()
+          $('body, html').animate({scrollTop: position},1500);
         }
       })
       .fail(function(){
