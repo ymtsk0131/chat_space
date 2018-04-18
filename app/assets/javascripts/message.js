@@ -28,9 +28,9 @@ $(function(){
     .done(function(data){
       var img = data.image_url ? imageHTML(data) : '';
       var html = messageHTML(data)
-      var position = $('.right-content-message').offset().top + $('.right-content-message').height()
       $('.right-content-message').append(html).append(img)
-      $('body, html').animate({scrollTop: position},1500);
+      var scrollHeight = $('.right-content-message').get(0).scrollHeight
+      $('body, html').animate({scrollTop: scrollHeight},1500);
       $('#message_content').val('');
       $('#new_message input.form__mask__submit-btn').prop('disabled', false);
     })
