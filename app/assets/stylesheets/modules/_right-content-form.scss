@@ -4,6 +4,7 @@
   position: fixed;
   margin-left: 300px;
   bottom: 0;
+  z-index: 2;
 
   &__mask {
     width: calc(100vw - 300px);
