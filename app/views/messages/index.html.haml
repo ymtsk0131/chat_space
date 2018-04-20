@@ -1,22 +1,23 @@
-%div.contents
+.contents
   =render 'layouts/side-bar'
-  %div.right-content-group-detail
-    %div.right-content-group-detail__name
+  .right-content-group-detail
+    .right-content-group-detail__name
       =@group.name
     %a{href: "edit"}
-      %div.right-content-group-detail__edit-botton Edit
-    %div.right-content-group-detail__member-list
+      .right-content-group-detail__edit-botton Edit
+    .right-content-group-detail__member-list
       MEMBER:
       -@group.users.each do |user|
         =user.name
-  %div.right-content-message
+  .right-content-main
     - @messages.each do |message|
-      %div.right-content-message__user-name{ data: { id: message.id } }=message.user.name
-      %div.right-content-message__date=message.created_at
-      - if message.content.present?
-        %div.right-content-message__message-text= message.content
-      - if message.image.present?
-        %div.right-content-message__message-text= image_tag message.image.url
+      .right-content-main-message{ id: message.id, data: { id: message.id } }
+        .right-content-main-message__user-name=message.user.name
+        .right-content-main-message__date=message.created_at
+        - if message.content.present?
+          .right-content-main-message__message-text= message.content
+        - if message.image.present?
+          .right-content-main-message__message-text= image_tag message.image.url
 
   .form
     .form_mask
