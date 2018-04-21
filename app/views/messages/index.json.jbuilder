@@ -4,8 +4,6 @@ if @new_message.present?
     json.content      message.content
     json.image_url    message.image.url
     json.created_at   message.created_at
-    json.user do
-      json.name message.user.name
-    end
+    json.user_name    message.user.name
   end
 end
