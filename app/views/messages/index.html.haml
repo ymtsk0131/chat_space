@@ -20,10 +20,10 @@
           .right-content-main-message__message-text= image_tag message.image.url
 
   .form
-    .form_mask
-      = form_for [@group, @message], html: {id: 'new_message'} do |f|
-        = f.text_field :content, class: 'form__mask__text', placeholder: 'type a message'
-        = f.submit 'Send', class: 'form__mask__submit-btn'
-        = f.label :image, class: 'form__mask__icon' do
-          = fa_icon 'picture-o'
-          = f.file_field :image, class: 'hidden'
+    = form_for [@group, @message], html: {id: 'new_message', class: 'form__new_message'} do |f|
+      = f.text_field :content, class: 'form__new_message__text', placeholder: 'type a message'
+      = f.label :image do
+        = fa_icon 'picture-o', class: 'form__new_message__icon'
+      = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__new_message__submit-btn'
+
