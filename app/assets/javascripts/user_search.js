@@ -14,6 +14,13 @@ $(document).on('turbolinks:load', function(){
     users.append(html)
   }
 
+  function appendNoUser() {
+    var html = `<div class="chat-group-user clearfix">
+                  <p class="chat-group-user__name">一致するユーザーはいませんでした</p>
+                </div>`
+    users.append(html)
+  }
+
   function addUser(user_name, user_id) {
     var html = `<div class='chat-group-user clearfix js-chat-member' id='chat-group-member-${user_id}'>
                   <input name='group[user_ids][]' type='hidden' value='${user_id}'>
@@ -35,9 +42,13 @@ $(document).on('turbolinks:load', function(){
     })
 
     .done(function(users) {
-      users.forEach(function(user){
-        appendUser(user)
-      });
+      if(users.length !== 0){
+        users.forEach(function(user){
+          appendUser(user)
+        });
+      }else{
+        appendNoUser()
+      }
     })
 
     .fail(function() {
