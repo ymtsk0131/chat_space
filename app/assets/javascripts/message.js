@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   // メッセージのHTMLを生成する
   function messageHTML(message){
     var html = `<div class="right-content-main-message" id="${message.id}" data-id="${message.id}">
@@ -14,7 +14,7 @@ $(function(){
     return html;
   }
 
-  $(document).on('submit', '#new_message', function(e){
+  $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');

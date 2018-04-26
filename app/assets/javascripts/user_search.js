@@ -1,5 +1,4 @@
 $(document).on('turbolinks:load', function(){
-  console.log("読み込み完了")
 
   // 検索結果として表示されるユーザー
   var users = $('#chat-group-users')
@@ -14,9 +13,9 @@ $(document).on('turbolinks:load', function(){
     users.append(html)
   }
 
-  function appendNoUser() {
+  function appendNoUser(user) {
     var html = `<div class="chat-group-user clearfix">
-                  <p class="chat-group-user__name">一致するユーザーはいませんでした</p>
+                  <p class="chat-group-user__name">${user}</p>
                 </div>`
     users.append(html)
   }
@@ -30,8 +29,7 @@ $(document).on('turbolinks:load', function(){
     members.append(html)
   }
 
-  $(document).on('keyup', '#user-search-field', function(){
-    console.log("keyup")
+  $('#user-search-field').on('keyup', function(){
     $('#chat-group-users').empty();
     var input = $('#user-search-field').val();
     $.ajax({
@@ -47,7 +45,7 @@ $(document).on('turbolinks:load', function(){
           appendUser(user)
         });
       }else{
-        appendNoUser()
+        appendNoUser("一致するユーザーはいませんでした。")
       }
     })
 
@@ -56,7 +54,7 @@ $(document).on('turbolinks:load', function(){
     })
   });
 
-  $(document).on('click', '#chat-group-users', function(){
+  $('#chat-group-users').on('click', function(){
     var add_btn = $('#' + event.target.id)
     var user_id = add_btn.attr('data-user-id')
     var user_name = add_btn.attr('data-user-name')
@@ -64,7 +62,7 @@ $(document).on('turbolinks:load', function(){
     $('#chat-group-user-' + user_id).remove();
   })
 
-  $(document).on('click', '#chat-group-members', function(){
+  $('#chat-group-members').on('click', function(){
     var remove_btn = $('#' + event.target.id)
     var user_id = remove_btn.attr('data-member-id')
     var user_name = remove_btn.attr('data-user-name')
