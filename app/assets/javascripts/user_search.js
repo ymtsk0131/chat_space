@@ -32,11 +32,12 @@ $(document).on('turbolinks:load', function(){
   $('#user-search-field').on('keyup', function(){
     $('#chat-group-users').empty();
     var input = $('#user-search-field').val();
+    var group_id = $('#user-search-field').attr('data-id')
     if(input.length !== 0){
       $.ajax({
         type: 'GET',
         url: '/users',
-        data: { keyword: input },
+        data: { keyword: input, group_id: group_id },
         datatype: 'json',
       })
       .done(function(users) {
