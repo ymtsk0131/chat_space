@@ -36,6 +36,7 @@ $(document).on('turbolinks:load', function(){
       var scrollHeight = $('.right-content-main').get(0).scrollHeight
       $('body, html').animate({scrollTop: scrollHeight},1500);
       $('#message_content').val('');
+      $('#message_image').val('');
       $('.form__new_message__submit-btn').prop('disabled', false);
     })
     .fail(function(){
