@@ -5,4 +5,8 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create]
   end
   resources :users, only: [:index]
+
+  namespace :api do
+    resources :groups, only: :index
+  end
 end
