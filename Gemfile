@@ -27,6 +27,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'pry'
 gem 'rack-cors'
+gem 'meta-tags'
 
 group :development, :test do
   gem 'byebug', platform: :mri
