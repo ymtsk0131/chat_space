@@ -1,4 +1,6 @@
 -# .contents
-  -# =render 'layouts/side-bar'
+-#   =render 'layouts/side-bar'
+- set_meta_tags(params: {user: current_user, groups: current_user.groups}.to_json)
+
 #group-index
 
