@@ -28,7 +28,7 @@ jobs:
 
     - run:
         name: install dependencies
-        command: |
+        command:
           bundle install --jobs=4 --retry=3 --path vendor/bundle
   
     - save_cache:
@@ -42,17 +42,17 @@ jobs:
 
     - run:
         name: Prepare db
-        command: |
+        command:
           bundle exec rake db:create db:schema:load --trace
 
     # run tests!
     - run:
         name: Rubocop
-        command: bundle exec rubocop
+        command: bundle exec rubocop -c .rubocop_todo.yml
 
     - run:
         name: Run rspec
-        command: |
+        command:
           mkdir /tmp/test-results
           TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
           bundle exec rspec --format progress --color --format documentation
