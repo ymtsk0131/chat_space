@@ -1,5 +1,7 @@
 class GroupsController < ApplicationController
   def index
+    groups = Group.select(:id, :name)
+    render json: groups
   end
 
   def new
