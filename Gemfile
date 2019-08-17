@@ -26,6 +26,7 @@ gem 'rails-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'pry'
+gem 'webpacker'
 
 group :development, :test do
   gem 'byebug', platform: :mri
