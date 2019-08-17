@@ -2,7 +2,9 @@ class MessagesController < ApplicationController
   before_action :set_group
 
   def index
-    messages = @group.messages.includes(:user)
+    messages = @group.messages
+                     .joins(:user)
+                     .select("messages.*, users.name")
     render json: messages
   end
 

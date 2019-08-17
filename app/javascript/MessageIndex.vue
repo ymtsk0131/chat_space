@@ -1,5 +1,9 @@
 <template>
-  <div>aaa</div>
+  <ul id="app">
+    <li v-for="m in messages" :key="m.id">
+      {{ m.name }}: {{ m.content }} {{ m.created_at }}
+    </li>
+  </ul>
 </template>
 
 <script>

@@ -9,11 +9,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import GroupIndex from 'GroupIndex.vue'
+import MessageIndex from 'MessageIndex.vue'
 
 const router = new VueRouter({
   routes: [
     { path: '/',
-      component: GroupIndex }
+      component: GroupIndex },
+    { path: '/groups/:id(\\d+)/messages',
+      name: 'MessageIndex',
+      component: MessageIndex }
   ]
 })
 
