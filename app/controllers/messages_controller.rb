@@ -7,13 +7,11 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = @group.messages.new(message_params)
-    if @message.save
-      respond_to do |format|
-        format.json
-      end
+    message = @group.messages.new(message_params)
+    if message.save
+      render json: message, status: :created
     else
-      redirect_to group_messages_path, alert: "メッセージを入力してください"
+      render json: { errors: message.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
