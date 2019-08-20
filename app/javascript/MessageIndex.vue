@@ -1,7 +1,8 @@
 <template>
   <ul id="app">
     <li v-for="m in messages" :key="m.id">
-      {{ m.name }}: {{ m.content }} {{ m.created_at }}
+        {{ m.user.name }} {{ m.created_at }}<br />
+        {{ m.content }} 
     </li>
   </ul>
 </template>

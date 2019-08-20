@@ -3,8 +3,6 @@ class MessagesController < ApplicationController
 
   def index
     messages = @group.messages
-                     .joins(:user)
-                     .select("messages.*, users.name")
     render json: messages
   end
 
