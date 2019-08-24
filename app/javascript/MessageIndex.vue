@@ -41,6 +41,7 @@ export default {
         .then(response => {
           let message = response.data;
           this.messages.push(message)
+          this.message.content = ''
         })
         .catch(error => {
           console.error(error);
