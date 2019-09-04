@@ -1,7 +1,7 @@
 <template>
   <ul id="app">
     <li v-for="g in groups" :key="g.id">
-      <router-link :to="{ name: 'MessageIndex', params: { id: g.id } }">
+      <router-link :to="{ name: 'GroupMessages', params: { id: g.id } }">
         {{ g.name }}
       </router-link>
     </li>

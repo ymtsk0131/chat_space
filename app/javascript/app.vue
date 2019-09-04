@@ -8,16 +8,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import GroupIndex from 'GroupIndex.vue'
-import MessageIndex from 'MessageIndex.vue'
+import GroupIndex from 'components/modules/GroupIndex.vue'
+import GroupMessages from 'components/pages/GroupMessages.vue'
 
 const router = new VueRouter({
   routes: [
     { path: '/',
       component: GroupIndex },
     { path: '/groups/:id(\\d+)/messages',
-      name: 'MessageIndex',
-      component: MessageIndex }
+      name: 'GroupMessages',
+      component: GroupMessages }
   ]
 })
 

@@ -3,12 +3,12 @@
     <ul>
       <li v-for="m in messages" :key="m.id">
         {{ m.user.name }} {{ m.created_at }}<br />
-        {{ m.content }} 
+        <span style="white-space:pre-wrap; word-wrap:break-word;">{{ m.content }}</span> 
       </li>
     </ul>
 
     <form @submit.prevent="createMessage">
-      <textarea v-model="message.content" placeholder="add multiple lines"></textarea>
+      <textarea v-model="message.content" placeholder="メッセージを入力"></textarea>
       <button type="submit">送信</button>
     </form>
   </div>
@@ -55,4 +55,7 @@ export default {
 </script>
 
 <style scoped>
+  li {
+    margin-bottom: 5px;
+  }
 </style>
