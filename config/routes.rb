@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   scope :api, {format: 'json'} do
-    resources :groups, only: [:index, :new, :create, :edit, :update] do
+    resources :groups, only: [:index, :show, :new, :create, :edit, :update] do
       resources :messages, only: [:index, :create]
     end
   end
