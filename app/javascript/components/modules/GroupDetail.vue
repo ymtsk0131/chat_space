@@ -1,7 +1,9 @@
 <template>
-  <div  id="app">
-    <h2>#{{ group.name }}</h2>
-    メンバー： {{ group.users.length }}
+  <div  id="app" class="group_detail border-bottom p-2">
+    <h3>#{{ group.name }}</h3>
+    <div class="group_info">
+      メンバー： {{ group.users.length }}
+    </div>
   </div>
 </template>
 
@@ -23,7 +25,14 @@ export default {
 </script>
 
 <style scoped>
-  li {
-    margin-bottom: 5px;
+  .group_detail {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    background-color: #fff; 
+  }
+  .group_info {
+    font-size: 80%;
+    color: #888;
   }
 </style>

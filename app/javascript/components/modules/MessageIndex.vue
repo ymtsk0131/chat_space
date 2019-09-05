@@ -1,16 +1,23 @@
 <template>
   <div  id="app">
-    <ul>
-      <li v-for="m in messages" :key="m.id">
-        {{ m.user.name }} {{ m.created_at }}<br />
-        <span style="white-space:pre-wrap; word-wrap:break-word;">{{ m.content }}</span> 
-      </li>
-    </ul>
+    <div class="message_area p-2">
+      <ul>
+        <li v-for="m in messages" :key="m.id">
+          <span style="font-weight:700;">{{ m.user.name }}</span>
+          <span style="color:#888; font-size:80%;">{{ m.created_at }}</span><br />
+          <span style="white-space:pre-wrap; word-wrap:break-word;">{{ m.content }}</span> 
+        </li>
+      </ul>
+    </div>
 
-    <form @submit.prevent="createMessage">
-      <textarea v-model="message.content" placeholder="メッセージを入力"></textarea>
-      <button type="submit">送信</button>
-    </form>
+    <div class="message_form p-2">
+      <form class="form-inline" @submit.prevent="createMessage">
+        <div class="form-group mr-2">
+          <textarea v-model="message.content" class="form-control" placeholder="メッセージを入力" rows="1"></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">送信</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -57,5 +64,14 @@ export default {
 <style scoped>
   li {
     margin-bottom: 5px;
+  }
+  .message_area {
+    margin:87px 0 54px;
+  }
+  .message_form {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    background-color: #fff;
   }
 </style>
