@@ -7,9 +7,13 @@
 <script>
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import BootstrapVue from 'bootstrap-vue'
 
 import GroupIndex from 'components/modules/GroupIndex.vue'
 import GroupMessages from 'components/pages/GroupMessages.vue'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 const router = new VueRouter({
   routes: [
