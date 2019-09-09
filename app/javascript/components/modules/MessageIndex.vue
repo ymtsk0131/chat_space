@@ -1,6 +1,6 @@
 <template>
   <div  id="app">
-    <div class="message_area p-2">
+    <div id="message_area" class="p-2" style="height:100vh; overflow-y: auto;">
       <ul>
         <li v-for="m in messages" :key="m.id">
           <span style="font-weight:700;">{{ m.user.name }}</span>
@@ -41,6 +41,11 @@ export default {
       .get(`/api/groups/${this.$route.params.id}/messages.json`)
       .then(response => (this.messages = response.data))
   },
+  watch: {
+    messages: function(newValue) {
+        this.scrollToEnd()
+    }
+  },
   methods: {
     createMessage: function() {
       axios
@@ -56,6 +61,12 @@ export default {
             this.errors = error.response.data.errors;
           }
         });
+    },
+    scrollToEnd: function() {
+      this.$nextTick(() => {
+        var container = this.$el.querySelector("#message_area");
+        container.scrollTop = container.scrollHeight;
+      })
     }
   }
 }
@@ -65,7 +76,7 @@ export default {
   li {
     margin-bottom: 5px;
   }
-  .message_area {
+  #message_area {
     margin:87px 0 54px;
   }
   .message_form {
