@@ -2,22 +2,16 @@ class MessagesController < ApplicationController
   before_action :set_group
 
   def index
-    @message = Message.new
-    @messages = @group.messages.includes(:user)
-    respond_to do |format|
-      format.html
-      format.json { @new_message = @messages.where("id > ?", params[:id]) }
-    end
+    messages = @group.messages
+    render json: messages
   end
 
   def create
-    @message = @group.messages.new(message_params)
-    if @message.save
-      respond_to do |format|
-        format.json
-      end
+    message = @group.messages.new(message_params)
+    if message.save
+      render json: message, status: :created
     else
-      redirect_to group_messages_path, alert: "メッセージを入力してください"
+      render json: { errors: message.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

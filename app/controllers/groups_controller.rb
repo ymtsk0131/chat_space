@@ -1,10 +1,17 @@
 class GroupsController < ApplicationController
   def index
+    groups = Group.select(:id, :name)
+    render json: groups
   end
 
   def new
     @group = Group.new
     @group.users << current_user
+  end
+
+  def show
+    @group = Group.find(params[:id])
+    render json: @group 
   end
 
   def create
