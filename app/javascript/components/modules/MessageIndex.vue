@@ -1,6 +1,6 @@
 <template>
   <div  id="app">
-    <div id="message_area" class="p-2" style="height:100vh; overflow-y: auto;">
+    <div id="message_area" class="px-2">
       <ul>
         <li v-for="m in messages" :key="m.id">
           <span style="font-weight:700;">{{ m.user.name }}</span>
@@ -37,16 +37,22 @@ export default {
     }
   },
   mounted () {
-    axios
-      .get(`/api/groups/${this.$route.params.id}/messages.json`)
-      .then(response => (this.messages = response.data))
+    this.getMessages()
   },
   watch: {
     messages: function(newValue) {
         this.scrollToEnd()
+    },
+    '$route' (to, from) {
+      this.getMessages()
     }
   },
   methods: {
+    getMessages: function() {
+      axios
+        .get(`/api/groups/${this.$route.params.id}/messages.json`)
+        .then(response => (this.messages = response.data))
+    },
     createMessage: function() {
       axios
         .post(`/api/groups/${this.$route.params.id}/messages`, this.message)
@@ -77,12 +83,14 @@ export default {
     margin-bottom: 5px;
   }
   #message_area {
-    margin:87px 0 54px;
+    padding:87px 0 54px;
+    height:100vh;
+    overflow-y: auto;
   }
   .message_form {
     position: fixed;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     background-color: #fff;
   }
 </style>
