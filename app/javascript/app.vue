@@ -9,7 +9,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 
-import GroupIndex from 'components/modules/GroupIndex.vue'
+import SideMenu from 'components/modules/SideMenu.vue'
 import GroupMessages from 'components/pages/GroupMessages.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
@@ -18,7 +18,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 const router = new VueRouter({
   routes: [
     { path: '/',
-      component: GroupIndex },
+      component: SideMenu },
     { path: '/groups/:id(\\d+)/messages',
       name: 'GroupMessages',
       component: GroupMessages }

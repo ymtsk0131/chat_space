@@ -19,9 +19,19 @@ export default {
     }
   },
   mounted () {
-    axios
-      .get(`/api/groups/${this.$route.params.id}.json`)
-      .then(response => (this.group = response.data))
+    this.getGroupDetail()
+  },
+  watch: {
+    '$route' (to, from) {
+      this.getGroupDetail()
+    }
+  },
+  methods: {
+    getGroupDetail: function() {
+      axios
+        .get(`/api/groups/${this.$route.params.id}.json`)
+        .then(response => (this.group = response.data))
+    }
   }
 }
 </script>
@@ -30,7 +40,7 @@ export default {
   .group_detail {
     position: fixed;
     top: 0;
-    width: 100vw;
+    width: 100%;
     background-color: #fff; 
   }
   .group_info {

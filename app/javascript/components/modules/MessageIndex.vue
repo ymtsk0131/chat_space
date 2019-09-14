@@ -37,16 +37,22 @@ export default {
     }
   },
   mounted () {
-    axios
-      .get(`/api/groups/${this.$route.params.id}/messages.json`)
-      .then(response => (this.messages = response.data))
+    this.getMessages()
   },
   watch: {
     messages: function(newValue) {
         this.scrollToEnd()
+    },
+    '$route' (to, from) {
+      this.getMessages()
     }
   },
   methods: {
+    getMessages: function() {
+      axios
+        .get(`/api/groups/${this.$route.params.id}/messages.json`)
+        .then(response => (this.messages = response.data))
+    },
     createMessage: function() {
       axios
         .post(`/api/groups/${this.$route.params.id}/messages`, this.message)
@@ -82,7 +88,7 @@ export default {
   .message_form {
     position: fixed;
     bottom: 0;
-    width: 100vw;
+    width: 100%;
     background-color: #fff;
   }
 </style>
