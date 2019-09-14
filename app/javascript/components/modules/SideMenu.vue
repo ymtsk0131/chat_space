@@ -2,12 +2,12 @@
   <div id="side_menu">
     <div class="hover_item p-2 mb-3">
       <div id="sidemenu_title" class="font-weight-bold text-white">Chat Space</div>
-      <div>test taro</div>
+      <div>{{ user.name }}</div>
     </div>
     <div class="mb-3">
       <div class="font-weight-bold pl-2">チャンネル</div>
       <ul class>
-        <router-link v-for="g in groups" :key="g.id" :to="{ name: 'GroupMessages', params: { id: g.id } }" class="text-reset">
+        <router-link v-for="g in user.groups" :key="g.id" :to="{ name: 'GroupMessages', params: { id: g.id } }" class="text-reset">
           <li class="hover_item pl-2 py-1"># {{ g.name }}</li>
         </router-link>
       </ul>
@@ -21,13 +21,13 @@ import axios from 'axios';
 export default {
   data: function () {
     return {
-      groups: []
+      user: []
     }
   },
   mounted () {
     axios
-      .get('/api/groups.json')
-      .then(response => (this.groups = response.data))
+      .get('/api/users.json')
+      .then(response => (this.user = response.data))
   }
 }
 </script>
