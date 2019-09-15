@@ -1,6 +1,11 @@
 <template>
   <div id="side_menu">
     <div class="hover_item p-2 mb-3">
+      <form method="post" action="/users/sign_out" class="d-inline float-right">
+        <input type="hidden" name="authenticity_token" v-model="token">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Sign out" class="btn btn-sm btn-sidemenu">
+      </form>
       <div id="sidemenu_title" class="font-weight-bold text-white">Chat Space</div>
       <div>{{ user.name }}</div>
     </div>
@@ -18,10 +23,13 @@
 <script>
 import axios from 'axios';
 
+const token = document.getElementsByName('csrf-token')[0].getAttribute('content')
+
 export default {
   data: function () {
     return {
-      user: []
+      user: [],
+      token: token
     }
   },
   mounted () {
@@ -50,5 +58,15 @@ export default {
   .hover_item:hover {
     background-color: #340b36;
     color: #fff;
+  }
+
+  .btn-sidemenu {
+    background-color: #3E0E40;
+    color: rgb(207,195,207);
+    border-color: rgb(207,195,207);
+  }
+  .btn-sidemenu:hover {
+    color: #fff;
+    border-color: #fff;
   }
 </style>
