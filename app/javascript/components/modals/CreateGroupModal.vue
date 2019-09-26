@@ -9,10 +9,12 @@
         </b-form-group>
 
         <b-form-group id="input-group-2" label="招待の送信先" label-for="input-2">
-          <ul>
-            <li v-for="user in new_users" :key="user.id">
-              {{ user.name }}
-              [X]
+          <ul class="list-inline">
+            <li class="list-inline-item mb-1" v-for="user in new_users" :key="user.id">
+              <b-button variant="light" size="sm">
+                <span class="mr-2">{{ user.name }}</span>
+                <span @click="removeUser(user)">×</span>
+              </b-button>
             </li>
           </ul>
 
@@ -79,6 +81,15 @@
         this.new_users.push(user)
         this.input = ''
         this.match_users = []
+      },
+      removeUser: function(removeUser) {
+        this.group.user_ids = this.group.user_ids.filter(function(user_id) {
+          return user_id !== removeUser.id
+        })
+
+        this.new_users = this.new_users.filter(function(user) {
+          return user !== removeUser
+        })
       },
       resetModal: function() {
         this.group = {
