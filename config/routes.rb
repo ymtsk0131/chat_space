@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :messages, only: [:index, :create]
     end
     resource :users, only: [:show]
+    get 'search_users', to: 'users#index'
   end
   resources :users, only: [:index]
 end

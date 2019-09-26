@@ -10,7 +10,10 @@
       <div>{{ user.name }}</div>
     </div>
     <div class="mb-3">
-      <div class="font-weight-bold pl-2">チャンネル</div>
+      <div class="font-weight-bold pl-2">
+        チャンネル
+        <CreateGroupModal />
+      </div>
       <ul class>
         <router-link v-for="g in user.groups" :key="g.id" :to="{ name: 'GroupMessages', params: { id: g.id } }" class="text-reset">
           <li class="hover_item pl-2 py-1"># {{ g.name }}</li>
@@ -21,6 +24,8 @@
 </template>
 
 <script>
+import CreateGroupModal from "components/modals/CreateGroupModal.vue";
+
 import axios from 'axios';
 
 const token = document.getElementsByName('csrf-token')[0].getAttribute('content')
@@ -36,7 +41,8 @@ export default {
     axios
       .get('/api/users.json')
       .then(response => (this.user = response.data))
-  }
+  },
+  components: { CreateGroupModal }
 }
 </script>
 

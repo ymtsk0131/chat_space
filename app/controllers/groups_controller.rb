@@ -4,22 +4,18 @@ class GroupsController < ApplicationController
     render json: groups
   end
 
-  def new
-    @group = Group.new
-    @group.users << current_user
-  end
-
   def show
     @group = Group.find(params[:id])
     render json: @group 
   end
 
   def create
-    @group = Group.new(group_params)
-    if @group.save
-      redirect_to root_path, notice: "グループを作成しました"
+    group = Group.new(group_params)
+    group.users << current_user
+    if group.save
+      render json: group, status: :created
     else
-      render :new
+      render json: { errors: group.errors.full_messages }, status: :unprocessable_entity
     end
   end
 
