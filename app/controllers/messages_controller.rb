@@ -11,13 +11,11 @@ class MessagesController < ApplicationController
     if message.save
       ActionCable.server.broadcast(
         'message_channel',
-        {
-          user: {
-            name: message.user.name
-          },
-          content: message.content,
-          created_at: message.created_at
-        }
+        user: {
+          name: message.user.name
+        },
+        content: message.content,
+        created_at: message.created_at
       )
     else
       render json: { errors: message.errors.full_messages }, status: :unprocessable_entity
