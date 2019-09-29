@@ -6,6 +6,7 @@
 
 <script>
 import Vue from 'vue'
+import ActionCable from 'actioncable'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 
@@ -14,6 +15,9 @@ import GroupMessages from 'components/pages/GroupMessages.vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+
+const cable = ActionCable.createConsumer('ws:localhost:3000/cable');
+Vue.prototype.$cable = cable;
 
 const router = new VueRouter({
   routes: [

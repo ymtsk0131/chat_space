@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     get 'search_users', to: 'users#index'
   end
   resources :users, only: [:index]
+
+  mount ActionCable.server => '/cable'
 end
