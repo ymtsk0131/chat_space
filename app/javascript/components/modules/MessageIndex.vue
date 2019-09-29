@@ -33,11 +33,17 @@ export default {
       messages: {},
       message: {
         content: '',
-      }
+      },
+      messageChannel: null
     }
   },
   mounted () {
     this.getMessages()
+    this.messageChannel = this.$cable.subscriptions.create( "MessageChannel",{
+      received: (data) => {
+        this.messages.push(data)
+      },
+    })
   },
   watch: {
     messages: function(newValue) {
@@ -57,8 +63,6 @@ export default {
       axios
         .post(`/api/groups/${this.$route.params.id}/messages`, this.message)
         .then(response => {
-          let message = response.data;
-          this.messages.push(message)
           this.message.content = ''
         })
         .catch(error => {
