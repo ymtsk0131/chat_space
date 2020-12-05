@@ -12,7 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2018_03_31_024921) do
 
-  create_table "group_users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "group_users", id: :serial, force: :cascade do |t|
     t.integer "group_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
@@ -21,13 +24,13 @@ ActiveRecord::Schema.define(version: 2018_03_31_024921) do
     t.index ["user_id"], name: "index_group_users_on_user_id"
   end
 
-  create_table "groups", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "groups", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "messages", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "messages", id: :serial, force: :cascade do |t|
     t.string "content"
     t.string "image"
     t.integer "group_id"
@@ -38,7 +41,7 @@ ActiveRecord::Schema.define(version: 2018_03_31_024921) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "users", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "users", id: :serial, force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
