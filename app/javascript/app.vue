@@ -16,7 +16,7 @@ import GroupMessages from 'components/pages/GroupMessages.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-const cable = ActionCable.createConsumer('ws:' + window.location.host + '/cable');
+const cable = ActionCable.createConsumer('wss:' + window.location.host + '/cable');
 Vue.prototype.$cable = cable;
 
 const router = new VueRouter({
