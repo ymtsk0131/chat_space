@@ -1,13 +1,13 @@
 <template>
-  <div  id="app">
-    <div id="message_area" class="px-2">
-      <ul>
-        <li v-for="m in messages" :key="m.id">
+  <div  id="app" class="p-3">
+    <div id="message_area">
+      <div>
+        <div class="message" v-for="m in messages" :key="m.id">
           <span style="font-weight:700;">{{ m.user.name }}</span>
           <span style="color:#888; font-size:80%;">{{ m.created_at }}</span><br />
           <span style="white-space:pre-wrap; word-wrap:break-word;">{{ m.content }}</span> 
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
 
     <div class="message_form p-2">
@@ -83,11 +83,11 @@ export default {
 </script>
 
 <style scoped>
-  li {
+  .message {
     margin-bottom: 5px;
   }
   #message_area {
-    padding:87px 0 54px;
+    padding:70px 0 54px;
     height:100vh;
     overflow-y: auto;
   }
