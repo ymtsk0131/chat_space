@@ -1,8 +1,12 @@
 <template>
   <div  id="app" class="group_detail border-bottom p-2">
-    <h3>#{{ group.name }}</h3>
-    <div class="group_info">
-      メンバー： {{ group.users.length }}
+    <div class="raw">
+      <div class="group_name">
+        #{{ group.name }}
+      </div>
+      <div class="group_info">
+        メンバー： {{ group.users.length }}
+      </div>
     </div>
   </div>
 </template>
@@ -42,6 +46,9 @@ export default {
     top: 0;
     width: 100%;
     background-color: #fff; 
+  }
+  .group_name {
+    font-weight:600;
   }
   .group_info {
     font-size: 80%;
