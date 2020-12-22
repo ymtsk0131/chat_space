@@ -1,5 +1,5 @@
 <template>
-  <div  id="app" class="group_detail border-bottom p-2">
+  <div  id="app" class="group_detail border-bottom p-3">
     <div class="raw">
       <div class="group_name">
         #{{ group.name }}

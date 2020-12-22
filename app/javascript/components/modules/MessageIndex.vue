@@ -1,8 +1,8 @@
 <template>
-  <div  id="app" class="p-3">
+  <div  id="app">
     <div id="message_area">
       <div>
-        <div class="message" v-for="m in messages" :key="m.id">
+        <div class="message p-3" v-for="m in messages" :key="m.id">
           <span style="font-weight:700;">{{ m.user.name }}</span>
           <span style="color:#888; font-size:80%;">{{ m.created_at }}</span><br />
           <span style="white-space:pre-wrap; word-wrap:break-word;">{{ m.content }}</span> 
@@ -10,13 +10,19 @@
       </div>
     </div>
 
-    <div class="message_form p-2">
-      <form class="form-inline" @submit.prevent="createMessage">
-        <div class="form-group mr-2">
-          <textarea v-model="message.content" class="form-control" placeholder="メッセージを入力" rows="1"></textarea>
-        </div>
-        <button class="btn btn-primary" type="submit">送信</button>
-      </form>
+    <div class="message_form p-3">
+      <b-form @submit.prevent="createMessage">
+        <b-form-group>
+          <b-form-textarea
+            id="textarea"
+            v-model="message.content"
+            placeholder="メッセージを入力"
+            rows="2"
+            max-rows="4"
+          ></b-form-textarea>
+        </b-form-group>
+        <b-button type="submit" variant="primary">送信</b-button>
+      </b-form>
     </div>
   </div>
 </template>
@@ -83,18 +89,15 @@ export default {
 </script>
 
 <style scoped>
-  .message {
-    margin-bottom: 5px;
-  }
   #message_area {
-    padding:70px 0 54px;
+    margin:76px 0 148px;
     height:100vh;
     overflow-y: auto;
   }
   .message_form {
     position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 75%;
     background-color: #fff;
   }
 </style>
