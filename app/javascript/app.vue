@@ -38,5 +38,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+ul, li {
+  list-style: none;
+}
+
+.nav-link {
+  padding: 0!important;
+}
+
+.dropdown-toggle::after {
+  color: white!important;
+}
 </style>

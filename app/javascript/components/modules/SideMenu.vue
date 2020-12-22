@@ -1,30 +1,33 @@
 <template>
-  <div id="side_menu">
-    <div class="hover_item p-2 mb-3">
-      <form method="post" action="/users/sign_out" class="d-inline float-right">
-        <input type="hidden" name="authenticity_token" v-model="token">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Sign out" class="btn btn-sm btn-sidemenu">
-      </form>
-      <div id="sidemenu_title" class="font-weight-bold text-white">Chat Space</div>
-      <div>{{ user.name }}</div>
+  <div id="side_menu" class="p-3">
+    <div class="hover_item mb-3">
+      <b-nav-item-dropdown>
+        <template #button-content>
+          <span class="font-weight-bold text-white">Chat Space</span>
+        </template>
+        <b-dropdown-item href="#" @click="modalShow = !modalShow">チャンネルを作成する</b-dropdown-item>
+        <b-dropdown-item href="#" @click="signOut">サインアウト</b-dropdown-item>
+      </b-nav-item-dropdown>
     </div>
     <div class="mb-3">
-      <div class="font-weight-bold pl-2">
+      <div class="font-weight-bold">
         チャンネル
-        <CreateGroupModal />
+        <span class="ml-2" @click="modalShow = !modalShow">＋</span>
       </div>
-      <ul class>
+      <div>
         <router-link v-for="g in user.groups" :key="g.id" :to="{ name: 'GroupMessages', params: { id: g.id } }" class="text-reset">
-          <li class="hover_item pl-2 py-1"># {{ g.name }}</li>
+          <div class="hover_item pl-2 py-1">#　{{ g.name }}</div>
         </router-link>
-      </ul>
+      </div>
     </div>
+    <b-modal id="create_group_modal" v-model="modalShow" hide-footer title="チャンネルを作成する" @show="resetModal" @hidden="resetModal">
+      <CreateGroupForm />
+    </b-modal>
   </div>
 </template>
 
 <script>
-import CreateGroupModal from "components/modals/CreateGroupModal.vue";
+import CreateGroupForm from "components/modules/CreateGroupForm.vue";
 
 import axios from 'axios';
 
@@ -34,7 +37,30 @@ export default {
   data: function () {
     return {
       user: [],
-      token: token
+      token: token,
+      modalShow: false
+    }
+  },
+  methods: {
+    resetModal: function() {
+      this.group = {
+        name: '',
+        user_ids: []
+      }
+      this.input = '',
+      this.new_users = [],
+      this.match_users = []
+    },
+    signOut: function() {
+      console.log('signout!')
+      axios
+        .delete('/users/sign_out', {authenticity_token: token, _mehod: 'delete'})
+        .then(response => {
+          window.location.href = '/'
+        })
+        .catch(error => {
+          window.location.href = '/'
+        });
     }
   },
   mounted () {
@@ -42,7 +68,7 @@ export default {
       .get('/api/users.json')
       .then(response => (this.user = response.data))
   },
-  components: { CreateGroupModal }
+  components: { CreateGroupForm }
 }
 </script>
 
