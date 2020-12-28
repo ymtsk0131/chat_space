@@ -10,6 +10,14 @@ import ActionCable from 'actioncable'
 import VueRouter from 'vue-router'
 import BootstrapVue from 'bootstrap-vue'
 
+import { library } from '@fortawesome/fontawesome-svg-core'
+import {  } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add()
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 import SideMenu from 'components/modules/SideMenu.vue'
 import GroupMessages from 'components/pages/GroupMessages.vue'
 
